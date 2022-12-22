@@ -1,0 +1,112 @@
+.container{
+    max-width: 1300px;
+    margin: auto;
+    overflow: auto;
+}
+.container .boxLogin{
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    margin: auto;
+    padding: 40px;
+}
+
+.container .boxLogin .logo{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container .boxLogin .logo img{
+    width: 15%;
+}
+
+.container .boxLogin .info{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container .boxLogin .info .titulo{
+    width: 100%;
+    text-align: center;
+    color: #101828;
+}
+
+.container .boxLogin .info .descripcion{
+    text-align: center;
+    width: 80%;
+    color: #475467;
+    margin: 10px 0px;
+}
+
+.container .boxLogin form {
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container .boxLogin form .fieldset{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.container .boxLogin form .fieldset label{
+    width: 100%;
+    font-weight: 500;
+    color: #344054;
+}
+
+.container .boxLogin form .fieldset input{
+    width: 100%;
+    font-weight: 500;
+    color: #344054;
+    margin: 10px 0px;
+    border: 1px solid #D0D5DD;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.container .boxLogin form .fieldset input:focus-visible {
+    outline: none;
+}
+
+.container .boxLogin form button {
+    margin: 10px 0px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #7839EE;
+    color: #fff;
+    font-weight: 700;
+    padding: 15px;
+    border: 1px solid #7839EE;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.container .boxLogin form .errores {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #b30a0a;
+    background-color: #f1d3d3;
+}
+
+
+.container .boxLogin form .errores h5{
+    color: #b30a0a;
+}
+
+@media only screen and (max-width: 600px) {
+    .container .boxLogin{
+        width: 100%;
+        padding: 50px 35px
+    }
+  }
