@@ -1,0 +1,129 @@
+.sidebarNav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #ccc;
+    padding: 40px 0px;
+}
+.sidebarNav .info {
+    width: 100%;
+    padding: 0px 30px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.sidebarNav .info img{
+    width: 20%;
+    margin-right: 15px;
+}
+.sidebarNav.notActive .info {
+    justify-content: center;
+}
+.sidebarNav.notActive .info img{
+    width: 100%;
+    margin-right: 0px;
+}
+.sidebarNav.notActive {
+    width: 100px;
+}
+.sidebarNav.notActive .navPrimary, .sidebarNav.notActive .navSecundary {
+    padding: 20px 30px;
+}
+.sidebarNav.notActive .navPrimary .Navlink a, .sidebarNav.notActive .navSecundary .Navlink a{
+    justify-content: center;
+}
+.sidebarNav.notActive .navPrimary .Navlink a .Linkicon, .sidebarNav.notActive .navSecundary .Navlink a .Linkicon{
+    margin-right: 0px;
+}
+.sidebarNav .navPrimary {
+    padding: 20px 40px;
+}
+.sidebarNav.notActive .navPrimary .Navlink a span, .sidebarNav.notActive .navSecundary .Navlink a span{
+    display: none;
+}
+
+.sidebarNav .navSecundary {
+    border-top: 1px solid #e6e6e6;
+    padding: 20px 40px;
+}
+
+.sidebarNav .Navlink {
+    padding: 15px 0px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #000;
+    display: block;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.sidebarNav .Navlink a{
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #000;
+    display: flex;
+    align-items: center;
+    transition: 0.2s all ease;
+}
+.sidebarNav .Navlink a .Linkicon{
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebarNav .Navlink.red a{
+    color: rgb(233, 0, 0);
+}
+
+.sidebarNav .Navlink a:hover {
+    opacity: 0.5;
+}
+
+.sidebarNav .Sidebarbutton{
+    position: absolute;
+    top: 48px;
+    right: -18px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 4px rgb(230 230 230), 0 0 7px rgb(255 255 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    transform: initial;
+    border: none;
+    letter-spacing: inherit;
+    color: inherit;
+    font-size: inherit;
+    text-align: inherit;
+    padding: 0;
+    font-family: inherit;
+    outline: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .sidebarNav{
+        width: 95%;
+    }
+    .sidebarNav.notActive{
+        width: 0px;
+    }
+    .sidebarNav.notActive .Sidebarbutton{
+        right: -35px;
+    }
+    .sidebarNav.notActive .info{
+        display: none;
+    }
+    .sidebarNav.notActive .navPrimary, .sidebarNav.notActive .navSecundary{
+        display: none;
+    }
+}

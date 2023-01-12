@@ -1,0 +1,92 @@
+.productSingle .infoProduct{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.productSingle .infoProduct .img{
+    width: 30%;
+}
+.productSingle .infoProduct .img img{
+    width: 100%;
+    height: auto;
+}
+.productSingle .infoProduct .detalles{
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px #ccc;
+    flex-wrap: wrap;
+    width: 40%;
+    padding-top: 40px;
+    margin-left: -20px;
+    padding: 40px;
+}
+.productSingle .infoProduct .detalles h2{
+    width: 100%;
+    font-size: 1.8em;
+}
+.productSingle .infoProduct .detalles .sku{
+    width: 100%;
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-weight: 600;
+}
+.productSingle .infoProduct .detalles .info{
+    padding: 20px 0px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    font-size: 20px;
+    font-weight: 300;
+}
+.productSingle .infoProduct .detalles .info .precio{
+    margin-top: 20px;
+    font-weight: 600;
+    opacity: 0.6;
+}
+.productSingle .infoProduct .detalles .estado{
+    margin-top: 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #0f8b00;
+}
+.productSingle .infoProduct .detalles .edit{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.productSingle .infoProduct .detalles .edit button, .productSingle .infoProduct .detalles .edit a{
+    color: #fff;
+    background-color: var(--primary);
+    padding: 8px 40px;
+    border: 2px solid var(--primary);
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: 0.5s all ease;
+    text-decoration: none;
+}
+.productSingle .infoProduct .detalles .edit button:hover, .productSingle .infoProduct .detalles .edit a:hover{
+    color: var(--primary);
+    background-color: #fff;
+    border: 2px solid var(--primary);
+}
+.tableproducts{
+    margin: 40px 0px;
+}
+
+.tableproducts h2{
+    margin-bottom: 40px;
+}
+@media only screen and (max-width: 600px) {
+    .productSingle .infoProduct .img {
+        width: 100%;
+    }
+    .productSingle .infoProduct .detalles{
+        width: 100%;
+        padding: 20px;
+        margin-left: 0px;
+        margin-top: -10px;
+    }
+}

@@ -2,6 +2,7 @@
     max-width: 1300px;
     margin: auto;
     overflow: auto;
+    min-height: 100vh;
 }
 .container .boxLogin{
     width: 500px;
@@ -109,4 +110,4 @@
         width: 100%;
         padding: 50px 35px
     }
-  }
+}

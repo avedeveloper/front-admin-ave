@@ -1,0 +1,20 @@
+.container-app .main {
+    margin-left: 300px;
+    padding: 20px 40px;
+    background-color: var(--bg);
+    transition: 0.3s all ease;
+    min-height: 100vh;
+}
+.container-app .main.sidebarClose{
+    margin-left: 100px;
+}
+@media only screen and (max-width: 600px) {
+    .container-app .main.sidebarClose{
+        margin-left: 0px;
+        display: block;
+    }
+    .container-app .main{
+        padding: 20px;
+        display: none;
+    }
+}

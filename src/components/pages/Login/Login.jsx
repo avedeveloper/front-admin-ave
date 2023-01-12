@@ -2,15 +2,20 @@ import { API_URL } from "../../../constants/env"
 import axios from "axios"
 import { getToken, setToken } from "../../../helpers/auth"
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import "./Login.css"
 import logo from "../../../assests/logoave.svg"
+import { AppContext } from "../../../context/AppContext"
+import Loader from "../../atoms/Loader/Loader"
 
 const Login = () => {
   const nav= useNavigate()
   const tokenUser = getToken()
 
+  const {loading, setLoading} = useContext(AppContext)
+
   useEffect(() => {
+    setLoading(false)
     tokenUser && nav("/admin")
   }, [])
 
@@ -18,20 +23,35 @@ const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
+    setLoading(true)
     setError("")
+
+    const config = {
+      headers: { 
+        "Access-Control-Allow-Origin": "*"
+      }
+    };
 
     const dataLogin = {
       email: e.target.email.value,
       password: e.target.password.value,
     }
 
-    axios.post(`${API_URL}admin/login`, dataLogin)
+    axios.post(`${API_URL}admin/login`, dataLogin, config)
       .then(resp => {
+        setLoading(false)
         setToken(resp.data.token)
         nav("/admin")
       })
       .catch(err => {
-        setError(err.response.data.error)
+        setLoading(false)
+        if(err.response?.data?.error){
+          setError(err.response.data.error)
+        }else if( err.message ) {
+          setError(`${err.message} - Error de API`)
+        }else {
+          setError('Error inesperado')
+        }
       })
   }
 
@@ -65,6 +85,7 @@ const Login = () => {
               required />
           </div>
           <button type="submit">Ingresar</button>
+          {loading && (<Loader />)}
           {error && 
             (
               <div className="errores">
