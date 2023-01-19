@@ -1,18 +1,24 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios"
 import logo from "../../assests/logoave.svg"
 import { useNavigate } from "react-router-dom"
 import "./login.css"
 import { AppContext } from "../../context/AppContext"
 import Loader from '../../components/Loader/index'
-
-
+import { getToken, setToken } from '../../helpers/auth'
 
 const Login = () => {
   const nav= useNavigate()
-
-
+  const tokenUser = getToken()
   const {loading, setLoading} = useContext(AppContext)
+  
+  const API = process.env.REACT_APP_API_URL
+  console.log(API);
+
+  useEffect(() => {
+    setLoading(false)
+    tokenUser && nav("/admin")
+  }, [])
 
 
   const [error, setError] = useState()
@@ -32,11 +38,10 @@ const Login = () => {
       password: e.target.password.value,
     }
 
-    axios.post(`https://128.199.6.213/admin/login`, dataLogin, config)
+    axios.post(`${API}/admin/login`, dataLogin, config)
       .then(res => {
-        const tokenUser = res.data.token
-        sessionStorage.setItem('user', tokenUser)
-        console.log(res.data)
+        setToken(res.data.token)
+        console.log(setToken)
         nav("/admin")
       })
       .catch(err => {

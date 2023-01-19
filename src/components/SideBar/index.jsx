@@ -14,15 +14,14 @@ import { MdLogout } from "react-icons/md"
 import { FiUsers } from "react-icons/fi"
 import { BiNotepad } from "react-icons/bi"
 import { AppContext } from '../../context/AppContext'
+import { deleteToken } from '../../helpers/auth';
 
 
 const Sidebar = () => {
   const nav = useNavigate()
-
-  const getUser = localStorage.getItem('user')
-  console.log(getUser);
   
   const handleSession = () => {
+    deleteToken()
     nav('/')
   }
 
@@ -60,10 +59,10 @@ const Sidebar = () => {
           <AiOutlineSetting />
         </NavSidebar>
         <div className="Navlink red">
-          <div onClick={handleSession} className="link">
+          <a onClick={handleSession} className="link">
             <div className="Linkicon"><MdLogout /></div>
             {sidebarOpen && "Cerrar Sesión"}
-          </div>
+          </a>
         </div>
       </div>
     </div>

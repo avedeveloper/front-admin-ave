@@ -7,7 +7,6 @@ const Productos = () => {
       <h1 className="titulo">
         Productos
       </h1>
-     {/*<TableProducts />*/}
     </div>
   )
 }
