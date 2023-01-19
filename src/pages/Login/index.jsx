@@ -1,30 +1,26 @@
 import React, { useContext, useState } from 'react'
-import logo from "../../assests/logoave.svg"
-import {  Navigate, useNavigate } from "react-router-dom"
-import './login.css'
 import axios from "axios"
-import Loader from '../../components/Loader'
-import { getToken } from '../../helpers/auth'
-import { AppContext } from '../../context/AppContext'
+import logo from "../../assests/logoave.svg"
+import { useNavigate } from "react-router-dom"
+import "./login.css"
+import { AppContext } from "../../context/AppContext"
+import Loader from '../../components/Loader/index'
 
 
 
 const Login = () => {
+  const nav= useNavigate()
 
-  const nav = useNavigate()
-
-  const tokenUser = getToken()
 
   const {loading, setLoading} = useContext(AppContext)
 
+
   const [error, setError] = useState()
- 
+
   const handleSubmit = e => {
     e.preventDefault()
-    setLoading(true)
     setError("")
 
-    
     const config = {
       headers: { 
         "Access-Control-Allow-Origin": "*"
@@ -35,26 +31,28 @@ const Login = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     }
-        
-    console.log(dataLogin)
-    axios.post(`http://128.199.6.213/admin/login`, dataLogin, config)
-    .then(res =>{
-      const tokenRecibido = res.data.token
-      sessionStorage.setItem('user', tokenRecibido)
-      console.log(res.data)
-      nav("/home")
-    })
-    const token = sessionStorage.getItem('user')
-    console.log(token)
-  }
-  
 
+    axios.post(`http://128.199.6.213/admin/login`, dataLogin, config)
+      .then(res => {
+        const tokenUser = res.data.token
+        sessionStorage.setItem('user', tokenUser)
+        console.log(res.data)
+        nav("/admin")
+      })
+      .catch(err => {
+        setLoading(false)
+        if(err.response?.data?.error){
+          setError(err.response.data.error)
+        }else if( err.message ) {
+          setError(`${err.message} - Error de API`)
+        }else {
+          setError('Error inesperado')
+        }
+      })
+  }
 
   return (
-
     <>
-    
-
     <div className="container">
       <div className="boxLogin">
         <div className="logo">
@@ -64,6 +62,7 @@ const Login = () => {
           <h1 className="titulo">Accede a tu cuenta</h1>
           <p className="descripcion">¡Bienvenido de nuevo! Por favor, introduce tus datos.</p>
         </div>
+
 
         <form onSubmit={handleSubmit}>
           <div className="fieldset">
@@ -85,7 +84,9 @@ const Login = () => {
               required />
           </div>
           <button type="submit">Ingresar</button>
+
           {loading && (<Loader />)}
+          
           {error && 
             (
               <div className="errores">

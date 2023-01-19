@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { deleteToken } from '../../helpers/auth'
 import "./sidebar.css"
 import logo from "../../assests/logoave.svg"
 import {
@@ -23,9 +22,7 @@ const Sidebar = () => {
   const getUser = localStorage.getItem('user')
   console.log(getUser);
   
-
   const handleSession = () => {
-    deleteToken()
     nav('/')
   }
 
@@ -45,7 +42,7 @@ const Sidebar = () => {
       {sidebarOpen ? <AiOutlineLeft /> : <AiOutlineRight />}
       </button>
       <div className="navPrimary">
-        <NavSidebar label="Home" to="/">
+        <NavSidebar label="Home" to="/admin">
           <AiOutlineHome />
         </NavSidebar>
         <NavSidebar label="Usuarios" to="/admin/usuarios" >
