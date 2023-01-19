@@ -1,5 +1,4 @@
 import React from 'react'
-//import TableUsers from '../../organisms/TableUsers/TableUsers'
 
 const Usuarios = () => {
   return (
@@ -7,7 +6,6 @@ const Usuarios = () => {
       <h1 className="titulo">
         Usuarios
       </h1>
-      {/*<TableUsers >*/}
     </div>
   )
 }
