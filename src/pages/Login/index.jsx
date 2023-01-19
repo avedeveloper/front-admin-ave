@@ -32,7 +32,7 @@ const Login = () => {
       password: e.target.password.value,
     }
 
-    axios.post(`http://128.199.6.213/admin/login`, dataLogin, config)
+    axios.post(`https://128.199.6.213/admin/login`, dataLogin, config)
       .then(res => {
         const tokenUser = res.data.token
         sessionStorage.setItem('user', tokenUser)
